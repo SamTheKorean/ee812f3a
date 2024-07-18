@@ -1,17 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './css/styles.css';
+import Header from './components/Header.jsx';
+import ActivityFeed from './components/ActivityFeed.jsx';
+import ArchivedCalls from './components/ArchivedCalls.jsx';
 
-import Header from './Header.jsx';
-
-const App = () => {
+function App() {
   return (
-    <div className='container'>
-      <Header/>
-      <div className="container-view">Some activities should be here</div>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<ActivityFeed />} />
+            <Route path="/archived" element={<ArchivedCalls />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
-};
-
-ReactDOM.render(<App/>, document.getElementById('app'));
+}
 
 export default App;
