@@ -10,9 +10,9 @@ export async function archiveCall(callId) {
   await fetch(`${BASE_URL}/activities/${callId}`, {
     method: 'PATCH',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ is_archived: true })
+    body: JSON.stringify({ is_archived: true }),
   });
 }
 
@@ -20,8 +20,14 @@ export async function unarchiveCall(callId) {
   await fetch(`${BASE_URL}/activities/${callId}`, {
     method: 'PATCH',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ is_archived: false })
+    body: JSON.stringify({ is_archived: false }),
   });
+}
+
+export async function fetchCallDetails(callId) {
+  const response = await fetch(`${BASE_URL}/activities/${callId}`);
+  const data = await response.json();
+  return data;
 }
