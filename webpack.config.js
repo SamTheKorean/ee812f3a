@@ -2,6 +2,10 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   module: {
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'bundle.js'
+    },
     rules: [
       {
         test: /\.html$/,
@@ -13,7 +17,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
       },
       {
